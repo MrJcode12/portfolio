@@ -1,0 +1,32 @@
+{
+  "name": "portfolio-mern",
+  "version": "1.0.0",
+  "description": "MERN stack portfolio for Jericho Gabarda",
+  "scripts": {
+    "client": "npm run dev --prefix client",
+    "server": "npm run dev --prefix server",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "build:client": "npm run build --prefix client",
+    "build:server": "npm run build --prefix server",
+    "build": "npm run build:client && npm run build:server",
+    "install:client": "npm install --prefix client",
+    "install:server": "npm install --prefix server",
+    "postinstall": "npm run install:client && npm run install:server"
+  },
+  "keywords": [
+    "portfolio",
+    "mern",
+    "react",
+    "typescript"
+  ],
+  "author": "Jericho Gabarda",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "client": "^0.0.1",
+    "framer-motion": "^12.34.0",
+    "lucide-react": "^0.563.0"
+  }
+}

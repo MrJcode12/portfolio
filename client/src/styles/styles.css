@@ -1,27 +1,17 @@
-/* =====================
-    CSS CUSTOM PROPERTIES
-   ===================== */
 :root {
-  /* Colors */
   --colorWhite: #ffffff;
   --colorLight: #efeded;
   --colorMedium: #676464;
   --colorDark: #222222;
   --colorDarker: #111111;
   --colorBlack: #000000;
-
-  /* Typography */
   --fontPrimary: 'Satoshi', sans-serif;
   --fontAccent: 'Apoc Revelations', sans-serif;
-
-  /* Font Sizes (Major Third: 1.25) */
   --fsBase: 1rem;
   --fsLg: 1.25rem;
   --fsXl: 1.5625rem;
   --fs2xl: 1.953125rem;
   --fs3xl: 2.44140625rem;
-
-  /* Spacing */
   --spaceXs: 0.5rem;
   --spaceSm: 1rem;
   --spaceMd: 1.5rem;
@@ -29,22 +19,17 @@
   --spaceXl: 3rem;
   --space2xl: 4rem;
   --space3xl: 6rem;
-
-  /* Layout */
   --maxWidth: 1200px;
   --navHeight: 80px;
   --borderRadius: 20px;
-
-  /* Transitions */
   --transitionFast: 0.2s ease;
   --transitionMedium: 0.3s ease;
   --transitionSlow: 0.6s ease;
 }
 
-/* =====================
-    RESET & BASE
-   ===================== */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -62,6 +47,69 @@ body {
   overflow-x: hidden;
 }
 
+/* =========================================
+   HERO LOAD REVEAL (REPLACEMENT, ALIGNED)
+   ========================================= */
+.heroLoadItem {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity var(--transitionSlow), transform var(--transitionSlow);
+  will-change: opacity, transform;
+}
+
+.heroLoaded .heroLoadItem {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.heroLoaded .heroGreeting.heroLoadItem {
+  transition-delay: 0.05s;
+}
+
+.heroLoaded .heroTitle.heroLoadItem {
+  transition-delay: 0.12s;
+}
+
+.heroLoaded .heroSubtitle.heroLoadItem {
+  transition-delay: 0.19s;
+}
+
+.heroLoaded .heroDescription.heroLoadItem {
+  transition-delay: 0.26s;
+}
+
+.heroLoaded .heroActions.heroLoadItem {
+  transition-delay: 0.33s;
+}
+
+.heroLoaded .heroVisual.heroLoadItem {
+  transition-delay: 0.22s;
+}
+
+/* Optional: start caret blink only after hero reveal */
+.heroSubtitle {
+  animation: none;
+  border-right: 2px solid transparent;
+}
+
+.heroLoaded .heroSubtitle {
+  border-right: 2px solid var(--colorBlack);
+  animation: blink 0.75s step-end infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroLoadItem {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .heroSubtitle {
+    border-right: none;
+    animation: none;
+  }
+}
+
 img {
   max-width: 100%;
   display: block;
@@ -72,9 +120,6 @@ a {
   color: inherit;
 }
 
-/* =====================
-    LAYOUT UTILITIES
-   ===================== */
 .container {
   max-width: var(--maxWidth);
   margin: 0 auto;
@@ -85,9 +130,6 @@ a {
   padding: var(--space3xl) 0;
 }
 
-/* =====================
-    NAVIGATION
-   ===================== */
 .navBar {
   position: fixed;
   top: 0;
@@ -113,6 +155,7 @@ a {
   font-size: var(--fsXl);
   font-weight: 500;
   transition: color var(--transitionFast);
+  cursor: pointer;
 }
 
 .navLogo:hover {
@@ -130,6 +173,7 @@ a {
   font-size: var(--fsBase);
   font-weight: 500;
   transition: color var(--transitionFast);
+  cursor: pointer;
 }
 
 .navLinks a:hover {
@@ -149,9 +193,6 @@ a {
   transform: translateY(-1px);
 }
 
-/* =====================
-   HAMBURGER MENU
-   ===================== */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -185,9 +226,6 @@ a {
   transform: translateY(-8.5px) rotate(-45deg);
 }
 
-/* =====================
-   MOBILE OVERLAY
-   ===================== */
 .mobileOverlay {
   position: fixed;
   inset: 0;
@@ -221,6 +259,7 @@ a {
   opacity: 0;
   transform: translateY(20px);
   transition: all var(--transitionSlow);
+  cursor: pointer;
 }
 
 .mobileOverlay.show .overlayNav a {
@@ -228,10 +267,21 @@ a {
   transform: translateY(0);
 }
 
-.overlayNav a:nth-child(1) { transition-delay: 0.1s; }
-.overlayNav a:nth-child(2) { transition-delay: 0.2s; }
-.overlayNav a:nth-child(3) { transition-delay: 0.3s; }
-.overlayNav a:nth-child(4) { transition-delay: 0.4s; }
+.overlayNav a:nth-child(1) {
+  transition-delay: 0.1s;
+}
+
+.overlayNav a:nth-child(2) {
+  transition-delay: 0.2s;
+}
+
+.overlayNav a:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+.overlayNav a:nth-child(4) {
+  transition-delay: 0.4s;
+}
 
 .overlayFooter {
   text-align: right;
@@ -248,9 +298,6 @@ a {
   color: var(--colorMedium);
 }
 
-/* =====================
-   HERO/ABOUT SECTION
-   ===================== */
 .heroSection {
   min-height: 100vh;
   display: flex;
@@ -291,13 +338,18 @@ a {
   margin-bottom: var(--spaceLg);
   position: relative;
   display: inline-block;
-  border-right: 2px solid var(--colorBlack);
-  animation: blink 0.75s step-end infinite;
 }
 
 @keyframes blink {
-  from, to { border-color: transparent; }
-  50% { border-color: var(--colorBlack); }
+
+  from,
+  to {
+    border-color: transparent;
+  }
+
+  50% {
+    border-color: var(--colorBlack);
+  }
 }
 
 .heroDescription {
@@ -313,9 +365,6 @@ a {
   margin-bottom: var(--space2xl);
 }
 
-/* =====================
-   BUTTONS
-   ===================== */
 .btn {
   padding: 0.75rem 1.75rem;
   font-size: var(--fsBase);
@@ -350,9 +399,6 @@ a {
   transform: translateY(-2px);
 }
 
-/* =====================
-   HERO VISUAL
-   ===================== */
 .heroVisual {
   flex: 1 1 35%;
   display: flex;
@@ -366,6 +412,7 @@ a {
   overflow: hidden;
   background-color: var(--colorLight);
   transition: transform var(--transitionMedium);
+  cursor: pointer;
 }
 
 .profileContainer:hover {
@@ -385,9 +432,6 @@ a {
   object-fit: cover;
 }
 
-/* =====================
-   SKILLS SECTION
-   ===================== */
 .skillsSection {
   background-color: var(--colorBlack);
   color: var(--colorWhite);
@@ -449,9 +493,17 @@ a {
   transform: translateY(0);
 }
 
-.skillCategory:nth-child(1) { transition-delay: 0.1s; }
-.skillCategory:nth-child(2) { transition-delay: 0.2s; }
-.skillCategory:nth-child(3) { transition-delay: 0.3s; }
+.skillCategory:nth-child(1) {
+  transition-delay: 0.1s;
+}
+
+.skillCategory:nth-child(2) {
+  transition-delay: 0.2s;
+}
+
+.skillCategory:nth-child(3) {
+  transition-delay: 0.3s;
+}
 
 .skillCategory:hover {
   background-color: rgba(255, 255, 255, 0.08);
@@ -520,9 +572,6 @@ a {
   color: var(--colorWhite);
 }
 
-/* =====================
-   PROJECTS SECTION
-   ===================== */
 .projectsSection {
   background-color: var(--colorWhite);
   overflow: hidden;
@@ -604,7 +653,7 @@ a {
 .projectOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.7) 100%);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.7) 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -633,6 +682,11 @@ a {
   text-align: center;
 }
 
+.projectLinks {
+  display: flex;
+  gap: var(--spaceMd);
+}
+
 .projectLink {
   padding: 0.75rem 1.5rem;
   border: 2px solid var(--colorWhite);
@@ -658,9 +712,6 @@ a {
   text-align: center;
 }
 
-/* =====================
-   SCROLL INDICATORS - PERFECTLY CENTERED
-   ===================== */
 .scrollIndicator {
   position: absolute;
   top: 50%;
@@ -677,8 +728,6 @@ a {
   outline: none;
   margin: 0;
   padding: 0;
-  
-  /* Use pseudo-element for perfect centering */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -691,12 +740,12 @@ a {
   border-right: 2px solid var(--colorWhite);
   border-bottom: 2px solid var(--colorWhite);
   transform: rotate(-45deg);
-  margin-left: -2px; /* Fine-tune positioning */
+  margin-left: -2px;
 }
 
 .scrollLeft::before {
   transform: rotate(135deg);
-  margin-left: 2px; /* Fine-tune positioning for left arrow */
+  margin-left: 2px;
   margin-right: -2px;
 }
 
@@ -713,16 +762,131 @@ a {
   right: 10px;
 }
 
-/* =====================
-  CONTACT SECTION
-   ===================== */
 .contactSection {
   background-color: var(--colorBlack);
-  text-align: center;
+  color: var(--colorWhite);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.contactSection .sectionTitle {
-  color: var(--colorBlack);
+.contactContent {
+  text-align: left;
+  max-width: 1000px;
+  width: 100%;
+}
+
+.contactIntro {
+  font-size: var(--fsLg);
+  color: var(--colorMedium);
+  margin-bottom: var(--spaceXl);
+  font-weight: 400;
+}
+
+.contactTitle {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 400;
+  color: var(--colorWhite);
+  margin-bottom: var(--space3xl);
+  display: flex;
+  align-items: center;
+  gap: var(--spaceLg);
+  line-height: 1;
+}
+
+.contactIcon {
+  display: inline-block;
+  font-size: 0.6em;
+  animation: spin 10s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.contactEmail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: var(--spaceLg);
+  font-size: clamp(var(--fsLg), 3vw, var(--fs2xl));
+  color: var(--colorWhite);
+  text-decoration: none;
+  padding-bottom: 0;
+  border-bottom: none;
+  margin-bottom: var(--space3xl);
+  transition: all var(--transitionMedium);
+  position: relative;
+}
+
+.contactEmail:hover {
+  color: var(--colorMedium);
+  border-bottom-color: none;
+}
+
+.emailArrow {
+  font-size: 1.5em;
+  transition: transform var(--transitionMedium);
+  margin-left: var(--spaceLg);
+  flex-shrink: 0;
+}
+
+.contactEmail:hover .emailArrow {
+  transform: translateX(-10px);
+}
+
+.contactFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-top: var(--spaceLg);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: var(--spaceLg);
+}
+
+.socialLinks {
+  display: flex;
+  gap: var(--spaceXl);
+}
+
+.socialLinks a {
+  color: var(--colorWhite);
+  font-size: var(--fsBase);
+  text-decoration: none;
+  transition: color var(--transitionFast);
+  position: relative;
+}
+
+.socialLinks a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--colorWhite);
+  transition: width var(--transitionMedium);
+}
+
+.socialLinks a:hover {
+  color: var(--colorMedium);
+}
+
+.socialLinks a:hover::after {
+  width: 100%;
+}
+
+.copyright {
+  color: var(--colorMedium);
+  font-size: var(--fsBase);
 }
 
 #projectsTitle {
@@ -730,11 +894,6 @@ a {
   transform: translateY(0) !important;
 }
 
-/* =====================
-  RESPONSIVE DESIGN
-   ===================== */
-
-/* Tablet */
 @media (max-width: 1024px) {
   .heroContent {
     gap: var(--space2xl);
@@ -754,7 +913,6 @@ a {
   }
 }
 
-/* Mobile */
 @media (max-width: 768px) {
   .hamburger {
     display: flex;
@@ -810,9 +968,40 @@ a {
   .scrollIndicator {
     display: none;
   }
+
+  .contactTitle {
+    font-size: 3rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .contactEmail {
+    font-size: var(--fsLg);
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .contactFooter {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spaceLg);
+  }
+
+  .socialLinks {
+    flex-wrap: wrap;
+    gap: var(--spaceMd);
+  }
+
+  .contactEmail .emailText {
+    flex-grow: 1;
+    white-space: nowrap;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
-/* Small Mobile */
 @media (max-width: 480px) {
   .overlayNav a {
     font-size: var(--fsXl);
@@ -848,168 +1037,7 @@ a {
   .projectCard {
     width: 300px;
   }
-}
 
-/* =====================
-    CONTACT SECTION
-   ===================== */ */
-.contactSection {
-  background-color: var(--colorBlack);
-  color: var(--colorWhite);
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.contactContent {
-  text-align: left;
-  max-width: 1000px;
-  width: 100%;
-}
-
-.contactIntro {
-  font-size: var(--fsLg);
-  color: var(--colorMedium);
-  margin-bottom: var(--spaceXl);
-  font-weight: 400;
-}
-
-.contactTitle {
-  font-size: clamp(3rem, 8vw, 6rem);
-  font-weight: 400;
-  color: var(--colorWhite);
-  margin-bottom: var(--space3xl);
-  display: flex;
-  align-items: center;
-  gap: var(--spaceLg);
-  line-height: 1;
-}
-
-.contactIcon {
-  display: inline-block;
-  font-size: 0.6em;
-  animation: spin 10s linear infinite;
-}
-
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.contactEmail {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  gap: var(--spaceLg);
-  font-size: clamp(var(--fsLg), 3vw, var(--fs2xl));
-  color: var(--colorWhite);
-  text-decoration: none;
-  padding-bottom: 0;
-  border-bottom: none;
-  margin-bottom: var(--space3xl);
-  transition: all var(--transitionMedium);
-  position: relative;
-}
-
-.contactEmail:hover {
-  color: var(--colorMedium);
-  border-bottom-color: none;
-}
-
-.emailArrow {
-  font-size: 1.5em;
-  transition: transform var(--transitionMedium);
-  margin-left: var(--spaceLg); 
-  flex-shrink: 0;
-}
-
-.contactEmail:hover .emailArrow {
-  transform: translateX(-10px);
-}
-
-.contactFooter {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  padding-top: var(--spaceLg);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  margin-top: var(--spaceLg);
-}
-
-.socialLinks {
-  display: flex;
-  gap: var(--spaceXl);
-}
-
-.socialLinks a {
-  color: var(--colorWhite);
-  font-size: var(--fsBase);
-  text-decoration: none;
-  transition: color var(--transitionFast);
-  position: relative;
-}
-
-.socialLinks a::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background-color: var(--colorWhite);
-  transition: width var(--transitionMedium);
-}
-
-.socialLinks a:hover {
-  color: var(--colorMedium);
-}
-
-.socialLinks a:hover::after {
-  width: 100%;
-}
-
-.copyright {
-  color: var(--colorMedium);
-  font-size: var(--fsBase);
-}
-
-/* Responsive Contact */
-@media (max-width: 768px) {
-  .contactTitle {
-    font-size: 3rem;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .contactEmail {
-    font-size: var(--fsLg); 
-    flex-direction: row; 
-    align-items: center; 
-    justify-content: space-between;
-  }
-
-  .contactFooter {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--spaceLg);
-  }
-
-  .socialLinks {
-    flex-wrap: wrap;
-    gap: var(--spaceMd);
-  }
-  .contactEmail .emailText { 
-    flex-grow: 1; 
-    white-space: nowrap; 
-    min-width: 0; 
-    overflow: hidden; 
-    text-overflow: ellipsis; 
-  }
-}
-
-@media (max-width: 480px) {
   .contactTitle {
     font-size: 2.5rem;
   }
