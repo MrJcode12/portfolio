@@ -1,0 +1,183 @@
+/* ====================================================================
+   BLOG PAGE STYLES
+   ==================================================================== */
+
+.blogPage {
+  min-height: 100vh;
+  background-color: var(--colorWhite);
+  padding-top: calc(var(--navHeight) + var(--space2xl));
+  padding-bottom: var(--space3xl);
+}
+
+.blogArticle {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ---------------------
+   BLOG HEADER
+   --------------------- */
+.blogHeader {
+  margin-bottom: var(--space3xl);
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  color: var(--colorMedium); 
+  font-size: var(--fsBase);
+  margin-bottom: var(--spaceXl);
+  transition: color var(--transitionFast);
+  font-weight: 500;
+}
+
+.backLink:hover {
+  color: var(--colorBlack);
+}
+
+.blogTitle {
+  font-size: clamp(var(--fs2xl), 5vw, 3.5rem); 
+  font-weight: 600;
+  color: var(--colorBlack);
+  line-height: 1.2;
+  margin-bottom: var(--spaceLg);
+}
+
+.blogMeta {
+  display: flex;
+  gap: var(--spaceMd); 
+  color: var(--colorMedium);
+  font-size: var(--fsBase);
+}
+
+.blogMeta time,
+.readingTime {
+  font-weight: 500; 
+}
+
+/* ---------------------
+   BLOG CONTENT TYPOGRAPHY
+   --------------------- */
+.blogContent {
+  color: var(--colorDark);
+  font-size: var(--fsBase);
+  line-height: 1.8;
+}
+
+.blogIntro {
+  font-size: var(--fsLg);
+  line-height: 1.7;
+  color: var(--colorDark);
+  margin-bottom: var(--space2xl);
+  font-weight: 500; 
+}
+
+.blogContent h2 {
+  font-size: var(--fsXl);
+  font-weight: 600;
+  color: var(--colorBlack);
+  margin-top: var(--space3xl); 
+  margin-bottom: var(--spaceLg);
+  line-height: 1.3;
+}
+
+.blogContent h3 {
+  font-size: var(--fsLg);
+  font-weight: 600;
+  color: var(--colorBlack);
+  margin-top: var(--spaceXl);
+  margin-bottom: var(--spaceSm);
+  line-height: 1.3;
+}
+
+.blogContent p {
+  margin-bottom: var(--spaceLg);
+}
+
+.blogContent strong {
+  font-weight: 600;
+  color: var(--colorBlack);
+}
+
+.blogContent a {
+  color: var(--colorBlack);
+  text-decoration: none; 
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5); 
+  transition: all var(--transitionFast);
+}
+
+.blogContent a:hover {
+  color: var(--colorMedium);
+  border-bottom-color: var(--colorMedium);
+}
+
+/* LISTS (for ingredients and instructions) */
+.blogContent ul,
+.blogContent ol {
+  margin-left: var(--spaceXl);
+  margin-bottom: var(--space2xl);
+}
+
+.blogContent ul li {
+  list-style: disc;
+  margin-bottom: var(--spaceSm);
+  line-height: 1.6;
+}
+
+.blogContent ol li {
+  list-style: decimal;
+  margin-bottom: var(--spaceSm);
+  line-height: 1.6;
+}
+
+/* ---------------------
+   BLOG FOOTER
+   --------------------- */
+.blogFooter {
+  margin-top: var(--space3xl);
+  padding-top: var(--spaceXl);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+
+/* ---------------------
+   RESPONSIVE DESIGN 
+   --------------------- */
+@media (max-width: 768px) {
+  .blogPage {
+    padding-top: calc(var(--navHeight) + var(--spaceXl));
+  }
+
+  .blogTitle {
+    font-size: 2.5rem; 
+  }
+
+  .blogIntro {
+    font-size: var(--fsBase);
+  }
+
+  .blogContent h2 {
+    font-size: var(--fsLg);
+    margin-top: var(--space2xl);
+  }
+
+  .blogMeta {
+    flex-direction: row; 
+    gap: var(--spaceMd);
+  }
+}
+
+@media (max-width: 480px) {
+  .blogTitle {
+    font-size: var(--fsXl);
+  }
+
+  .blogContent {
+    font-size: 0.9375rem;
+  }
+  
+  .blogMeta {
+    flex-direction: column; 
+    gap: var(--spaceXs);
+  }
+}
