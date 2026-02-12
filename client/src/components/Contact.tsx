@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom';
-
 const Contact = () => {
   return (
     <section id="contact" className="contactSection section">
