@@ -21,8 +21,6 @@ const Contact = () => {
             <div className="socialLinks">
               <a href="https://www.linkedin.com/feed/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
               <a href="https://github.com/jerichogabarda" target="_blank" rel="noopener noreferrer">GitHub</a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
-              <Link to="/blog">Blog</Link>
             </div>
 
             <p className="copyright">© Jericho Gabarda 2025</p>
