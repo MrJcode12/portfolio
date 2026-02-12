@@ -68,7 +68,7 @@ const Projects = () => {
         "A clean and responsive personal portfolio website built with React, TypeScript, and CSS to present projects, skills, and experience in a professional, user-focused layout.",
       tech: ["React", "TypeScript", "CSS"],
       image: "/resources/img/portfolio.png",
-      siteLink: "https://jgabarda.netlify.app/",
+      siteLink: "https://jpgabarda.netlify.app/",
       githubLink: "https://github.com/MrJcode12/portfolio",
     },
     {
