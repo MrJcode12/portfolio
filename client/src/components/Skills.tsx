@@ -36,7 +36,6 @@ const Skills = () => {
     {
       title: 'Database & Tools',
       skills: [
-        { name: 'MySQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
         { name: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
         { name: 'MongoDB', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
         { name: 'Git', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
@@ -80,13 +79,13 @@ const Skills = () => {
     <section id="skills" className="skillsSection section" ref={sectionRef}>
       <div className="container">
         <div className="skillsHeader">
-          <h2 
+          <h2
             className={`sectionTitle ${visibleElements.has('skills-title') ? 'visible' : ''}`}
             data-observe-id="skills-title"
           >
             Skills & Technologies
           </h2>
-          <p 
+          <p
             className={`sectionSubtitle ${visibleElements.has('skills-subtitle') ? 'visible' : ''}`}
             data-observe-id="skills-subtitle"
           >
@@ -96,7 +95,7 @@ const Skills = () => {
 
         <div className="skillsGrid">
           {skillCategories.map((category, idx) => (
-            <div 
+            <div
               key={category.title}
               className={`skillCategory ${visibleElements.has(`skill-cat-${idx}`) ? 'visible' : ''}`}
               data-observe-id={`skill-cat-${idx}`}
@@ -115,7 +114,7 @@ const Skills = () => {
         </div>
 
         <div className="resumeSection">
-          <a href="/Jericho-Gabarda-Resume.pdf" download className="btn btnResume">
+          <a href="/Resume_Gabarda_Jericho.pdf" download className="btn btnResume">
             Download Resume
           </a>
         </div>
